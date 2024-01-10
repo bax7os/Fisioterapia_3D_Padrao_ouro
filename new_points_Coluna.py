@@ -15,7 +15,7 @@ diretorio = 'C:/Users/clara/Downloads/Fisioterapia (Cod tsv)/input/Coluna'
 # Busca por todos os arquivos TSV no diretório especificado
 arquivos_tsv = glob.glob(f'{diretorio}/*.tsv')
 
-
+//teste
 # Verifica se há pelo menos um arquivo TSV na pasta
 if arquivos_tsv:
     # Assume que estamos usando o primeiro arquivo encontrado
