@@ -6,7 +6,6 @@ def calculate_midpoint(x1, y1, z1, x2, y2, z2):
     midpoint_y = (y1 + y2) / 2
     midpoint_z = (z1 + z2) / 2
     return round(midpoint_x, 3), round(midpoint_y, 3), round(midpoint_z, 3)
-
 # output file names
 output_file_points = 'C:/Users/clara/Downloads/Fisioterapia (Cod tsv)/output/Coluna/output_file_points_Coluna.tsv'
 # Especifica o diretório onde os arquivos TSV estão
@@ -14,8 +13,6 @@ diretorio = 'C:/Users/clara/Downloads/Fisioterapia (Cod tsv)/input/Coluna'
 
 # Busca por todos os arquivos TSV no diretório especificado
 arquivos_tsv = glob.glob(f'{diretorio}/*.tsv')
-
-
 # Verifica se há pelo menos um arquivo TSV na pasta
 if arquivos_tsv:
     # Assume que estamos usando o primeiro arquivo encontrado
@@ -26,7 +23,7 @@ with open(input_file, 'r') as tsv_in, open(output_file_points, 'w', newline='') 
     reader = csv.reader(tsv_in, delimiter='\t')
     writer = csv.writer(tsv_out, delimiter='\t')
     # Pula as linhas do cabeçalho
-    for i in range(8):
+    for i in range(10):
         next(reader, None)
 
     

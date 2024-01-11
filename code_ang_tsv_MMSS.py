@@ -43,7 +43,7 @@ with open(input_file, 'r') as tsv_in, open(output_angle, 'w', newline='') as tsv
 
         
 
-        if count % 6 == 0:
+        if count % 3 == 0:
             # abertura no ombro Ângulo entre retas formadas por AC_D/AC_E e CM_D/CM_E
             x1, y1, z1 = map(float, row[50:53])  # cotovelo direito gerado por new_points
             x2, y2, z2 = map(float, row[29:32])  # OMBRO direito (AC_D)

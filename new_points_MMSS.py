@@ -25,7 +25,7 @@ if arquivos_tsv:
 with open(input_file, 'r') as tsv_in, open(output_file_points, 'w', newline='') as tsv_out:
     reader = csv.reader(tsv_in, delimiter='\t')
     writer = csv.writer(tsv_out, delimiter='\t')
-        # Pula as linhas do cabeçalho
+    # Pula as linhas do cabeçalho
     for i in range(10):
         next(reader, None)
     for row in reader:
