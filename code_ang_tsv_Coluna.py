@@ -30,11 +30,49 @@ def calculate_angle(point1, point2, point3):
 
 
 count = 0
+#funçao que calcula o comprimento de um vetor
+def modulo_vetor(x, y, z):
+                
+    v = (x**2 + y**2 + z**2)**0.5
+                
+    return v
+            
+'''funçao que retona um vetor normalizado, ou seja, um vetor na mesma direção mas com norma igual a 1'''
+def normaliza_vetor(x, y, z):
+                
+    aux = modulo_vetor(x, y, z)
+                
+    v = [x/aux, y/aux, z/aux]
+                
+    return v
 
+'''funçao que recebe como parametro as coordenadas de dois pontos, 
+que sao os extremos das duas retas, ou seja, esses dois pontos definem essa reta. ela retorna a direção da reta no espaço'''
+def calcula_inclinacao(x1, y1, z1, x2, y2, z2):
+                
+    vetor_diretor = [(x2 - x1), (y2 - y1), (z2 - z1)]
+                
+    return normaliza_vetor(*vetor_diretor)
+                
+'''função recebe as coordenadas de 4 pontos, 2 de uma reta (final e inicial) e 2 de outra'''
+def angulo_de_flexao(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4):
+                
+    inclinacao_reta1 = calcula_inclinacao(x1, y1, z1, x2, y2, z2)
+    inclinacao_reta2 = calcula_inclinacao(x3, y3, z3, x4, y4, z4)
+                
+    produto_escalar = 0.0
+                
+    for v1, v2 in zip(inclinacao_reta1, inclinacao_reta2):
+        produto_escalar += v1 * v2
+             
+    angulo = math.acos(produto_escalar)
+
+    return math.degrees(angulo)
 #
 # explicar csv_out
 #
 # Read the input TSV file and create an output TSV file
+
 with open(input_file, 'r') as tsv_in, open(output_angle, 'w', newline='') as tsv_out:
     reader = csv.reader(tsv_in, delimiter='\t')
     writer = csv.writer(tsv_out, delimiter='\t')
@@ -45,13 +83,13 @@ with open(input_file, 'r') as tsv_in, open(output_angle, 'w', newline='') as tsv
         if count % 3 == 0:
             
             # flexao cabeca
-            x1, y1, z1 = map(float, row[44:47])  # ponto medio CM gerado por new_points_coluna
-            x2, y2, z2 = map(float, row[47:50])  # ponto medio AC gerado por new_points_coluna
-            x3, y3, z3 = map(float, row[50:53])  # ponto medio TMF gerado por new_points_coluna
+            x1_, y1_, z1_ = map(float, row[44:47])  # ponto medio CM gerado por new_points_coluna
+            x2_, y2_, z2_ = map(float, row[47:50])  # ponto medio AC gerado por new_points_coluna
+            x3_, y3_, z3_ = map(float, row[50:53])  # ponto medio TMF gerado por new_points_coluna
 
-            ponto1 = [x1, y1, z1]
-            ponto2= [x2, y2, z2]
-            ponto3 = [x3, y3, z3]
+            ponto1 = [x1_, y1_, z1_]
+            ponto2= [x2_, y2_, z2_]
+            ponto3 = [x3_, y3_, z3_]
 
             flexao_cabeca = calculate_angle(ponto1, ponto2, ponto3)
 
@@ -66,14 +104,38 @@ with open(input_file, 'r') as tsv_in, open(output_angle, 'w', newline='') as tsv
             ponto22= [x22, y22, z22]
             ponto33 = [x33, y33, z33]
 
-            flexao_tronco = calculate_angle(ponto11, ponto33, ponto22)
+            flexao_tronco = calculate_angle(ponto11, ponto22, ponto33)
+            
+            #///////////////////////////////////////////////////////////////////////////////////////
+
+             # rotação tronco
+            X, Y, Z = map(float, row[32:35])  # AC_D
+            X1, Y1, Z1 = map(float, row[35:38])  # AC_E
+            X2, Y2, Z2 = map(float, row[41:44]) #EIAS_D
+            X3, Y3, Z3 = map(float, row[38:41]) #EIAS_E
+
+
+        
+
+               
+
+            ponto111 = [X, Y, Z ]
+            ponto222= [X1, Y1, Z1]
+            ponto333 = [X2, Y2, Z2]
+            ponto4 = [X3, Y3, Z3]
+  
+            x_inicial, y_inicial, z_inicial = ponto222
+            x_final, y_final, z_final = ponto111
+            x1_inicial, y1_inicial, z1_inicial = ponto4
+            x1_final, y1_final, z1_final = ponto333
+
+
+            rotacao_tronco = angulo_de_flexao(x_inicial, y_inicial, z_inicial, x_final, y_final, z_final, x1_inicial, y1_inicial, z1_inicial, x1_final, y1_final, z1_final  )
             
             #///////////////////////////////////////////////////////////////////////////////////////
 
 
-
-
-            new_row = ["flexao cabeca:", flexao_cabeca, "flexao tronco:", flexao_tronco]
+            new_row = ["flexao cabeca:", flexao_cabeca, "flexao tronco:", flexao_tronco, "rotacao tronco:", rotacao_tronco]
 
             writer.writerow(new_row)
 

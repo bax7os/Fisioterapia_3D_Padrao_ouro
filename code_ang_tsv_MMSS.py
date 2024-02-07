@@ -62,8 +62,8 @@ with open(input_file, 'r') as tsv_in, open(output_angle, 'w', newline='') as tsv
 
             # Abducao ombro esquerdo C_E AC_E AC_D
             x12, y12, z12 = map(float, row[56:59])  # cotovelo esquerdo gerado por new_points
-            x22, y22, z22 = map(float, row[29:32])  # OMBRO direito (AC_D)
-            x32, y32, z32 = map(float, row[32:35])  # ombro esquerdo (AC_E)
+            x22, y22, z22 = map(float, row[32:35])  # OMBRO direito (AC_E)
+            x32, y32, z32 = map(float, row[29:32])  # ombro esquerdo (AC_D)
 
             ponto1 = [x12, y12, z12]
             ponto2= [x22, y22, z22]
