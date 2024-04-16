@@ -9,10 +9,9 @@ def calculate_midpoint(x1, y1, z1, x2, y2, z2):
 
 
 # output file names
-output_file_points = 'C:/Users/clara/Downloads/Fisioterapia (Cod tsv)/output/MMSS/output_file_points_MMSS.tsv'
+output_file_points = 'D:/Faculdade/PET/Fisioterapia/Fisioterapia_tsv/projeto-fisioterapia-3D/output/MMSS/output_file_points_MMSS.tsv'
 # Especifica o diretório onde os arquivos TSV estão
-diretorio = 'C:/Users/clara/Downloads/Fisioterapia (Cod tsv)/input/MMSS'
-
+diretorio = 'D:/Faculdade/PET/Fisioterapia/Fisioterapia_tsv/projeto-fisioterapia-3D/input/MMSS'
 # Busca por todos os arquivos TSV no diretório especificado
 arquivos_tsv = glob.glob(f'{diretorio}/*.tsv')
 # Verifica se há pelo menos um arquivo TSV na pasta
@@ -46,7 +45,7 @@ with open(input_file, 'r') as tsv_in, open(output_file_points, 'w', newline='') 
         #ponto medio do pulso DIREITO PEU_D e PER_D
         #_____________________________________________________________________________________________________________
         x11, y11, z11 = map(float, row[17:20]) # PEU_D
-        x22, y22, z22 = map(float, row[26:29]) # PER_D
+        x22, y22, z22 = map(float, row[23:26]) # PER_D
 
         midpoint_xP_D, midpoint_yP_D, midpoint_zP_D = calculate_midpoint(x11, y11, z11, x22, y22, z22)
         #_____________________________________________________________________________________________________________
@@ -58,7 +57,7 @@ with open(input_file, 'r') as tsv_in, open(output_file_points, 'w', newline='') 
         #ponto medio do cotovelo ESQUERDO EM_E e EL_E
         #_____________________________________________________________________________________________________________
 
-        x111, y111, z111 = map(float, row[41:44]) #EM_E
+        x111, y111, z111 = map(float, row[35:38]) #EM_E
         x222, y222, z222 = map(float, row[44:47]) #EL_E
 
         midpoint_xC_E, midpoint_yC_E, midpoint_zC_E = calculate_midpoint(x111, y111, z111, x222, y222, z222)
@@ -68,7 +67,7 @@ with open(input_file, 'r') as tsv_in, open(output_file_points, 'w', newline='') 
         #ponto medio do pulso ESQUERDO PER_E PEU_E
         #_____________________________________________________________________________________________________________
 
-        x14, y14, z14 = map(float, row[23:26]) # PER_E
+        x14, y14, z14 = map(float, row[20:23]) # PER_E
         x24, y24, z24 = map(float, row[47:50]) # PEU_E
 
         midpoint_xP_E, midpoint_yP_E, midpoint_zP_E = calculate_midpoint(x14, y14, z14, x24, y24, z24)
@@ -85,8 +84,8 @@ with open(input_file, 'r') as tsv_in, open(output_file_points, 'w', newline='') 
         #ponto medio da pelve ESQUERDA EIPS_D EIPS_E
         #_____________________________________________________________________________________________________________
 
-        x1112, y1112, z1112 = map(float, row[20:23]) # EIPS_D
-        x22222, y22222, z22222 = map(float, row[8:11]) # EIPS_E
+        x1112, y1112, z1112 = map(float, row[8:11]) # EIPS_D
+        x22222, y22222, z22222 = map(float, row[11:14]) # EIPS_E
 
         midpoint_xPE_E, midpoint_yPE_E, midpoint_zPE_E = calculate_midpoint( x1112, y1112, z1112, x22222, y22222, z22222)
         
@@ -100,4 +99,5 @@ with open(input_file, 'r') as tsv_in, open(output_file_points, 'w', newline='') 
 
         # Write the updated row to the output file
         writer.writerow(row)
+        
         

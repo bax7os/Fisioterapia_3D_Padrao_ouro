@@ -4,8 +4,8 @@ import csv
 import numpy as np
 import math
 
-input_file = 'C:/Users/clara/Downloads/Fisioterapia (Cod tsv)/output/Coluna/output_file_points_Coluna.tsv'
-output_angle = 'C:/Users/clara/Downloads/Fisioterapia (Cod tsv)/angulos/Coluna/ang_Coluna_tsv.tsv'
+input_file = 'D:/Faculdade/PET/Fisioterapia/Fisioterapia_tsv/projeto-fisioterapia-3D/output/Coluna/output_file_points_Coluna.tsv'
+output_angle = 'D:/Faculdade/PET/Fisioterapia/Fisioterapia_tsv/projeto-fisioterapia-3D/angulos/Coluna/ang_Coluna_tsv.tsv'
 
 def calculate_angle(point1, point2, point3):
     # Calculate vectors from point2 to point1 and point2 to point3
@@ -83,7 +83,7 @@ with open(input_file, 'r') as tsv_in, open(output_angle, 'w', newline='') as tsv
         if count % 3 == 0:
             
             # flexao cabeca
-            x1_, y1_, z1_ = map(float, row[44:47])  # ponto medio CM gerado por new_points_coluna
+            x1_, y1_, z1_ = map(float, row[20:23])  # GA 
             x2_, y2_, z2_ = map(float, row[47:50])  # ponto medio AC gerado por new_points_coluna
             x3_, y3_, z3_ = map(float, row[50:53])  # ponto medio TMF gerado por new_points_coluna
 
@@ -109,10 +109,10 @@ with open(input_file, 'r') as tsv_in, open(output_angle, 'w', newline='') as tsv
             #///////////////////////////////////////////////////////////////////////////////////////
 
              # rotação tronco
-            X, Y, Z = map(float, row[32:35])  # AC_D
-            X1, Y1, Z1 = map(float, row[35:38])  # AC_E
+            X, Y, Z = map(float, row[35:38])  # AC_D
+            X1, Y1, Z1 = map(float, row[38:41])  # AC_E
             X2, Y2, Z2 = map(float, row[41:44]) #EIAS_D
-            X3, Y3, Z3 = map(float, row[38:41]) #EIAS_E
+            X3, Y3, Z3 = map(float, row[8:11]) #EIAS_E
 
 
         

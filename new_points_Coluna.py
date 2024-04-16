@@ -7,9 +7,9 @@ def calculate_midpoint(x1, y1, z1, x2, y2, z2):
     midpoint_z = (z1 + z2) / 2
     return round(midpoint_x, 3), round(midpoint_y, 3), round(midpoint_z, 3)
 # output file names
-output_file_points = 'C:/Users/clara/Downloads/Fisioterapia (Cod tsv)/output/Coluna/output_file_points_Coluna.tsv'
+output_file_points = 'D:/Faculdade/PET/Fisioterapia/Fisioterapia_tsv/projeto-fisioterapia-3D/output/Coluna/output_file_points_Coluna.tsv'
 # Especifica o diretório onde os arquivos TSV estão
-diretorio = 'C:/Users/clara/Downloads/Fisioterapia (Cod tsv)/input/Coluna'
+diretorio = 'D:/Faculdade/PET/Fisioterapia/Fisioterapia_tsv/projeto-fisioterapia-3D/input/Coluna'
 
 # Busca por todos os arquivos TSV no diretório especificado
 arquivos_tsv = glob.glob(f'{diretorio}/*.tsv')
@@ -34,8 +34,8 @@ with open(input_file, 'r') as tsv_in, open(output_file_points, 'w', newline='') 
 
         #ponto medio  CM_D e CM_E
         #_____________________________________________________________________________________________________________
-        x1, y1, z1 = map(float, row[20:23]) #CM_D
-        x2, y2, z2 = map(float, row[23:26]) #CM_E
+        x1, y1, z1 = map(float, row[23:26]) #CM_D
+        x2, y2, z2 = map(float, row[26:29]) #CM_E
 
         midpoint_xCM, midpoint_yCM, midpoint_zCM = calculate_midpoint(x1, y1, z1, x2, y2, z2)
         #_____________________________________________________________________________________________________________
@@ -45,8 +45,8 @@ with open(input_file, 'r') as tsv_in, open(output_file_points, 'w', newline='') 
 
         #ponto medio AC_D e AC_E
         #_____________________________________________________________________________________________________________
-        x11, y11, z11 = map(float, row[32:35]) #AC_D
-        x22, y22, z22 = map(float, row[35:38]) #AC_E
+        x11, y11, z11 = map(float, row[35:38]) #AC_D
+        x22, y22, z22 = map(float, row[38:41]) #AC_E
 
         midpoint_xAC, midpoint_yAC, midpoint_zAC = calculate_midpoint(x11, y11, z11, x22, y22, z22)
         #_____________________________________________________________________________________________________________
@@ -69,8 +69,8 @@ with open(input_file, 'r') as tsv_in, open(output_file_points, 'w', newline='') 
 
         #ponto medio  EIAS_D e EIAS_E
         #_____________________________________________________________________________________________________________
-        x14, y14, z14 = map(float, row[8:11]) #EIAS_D
-        x24, y24, z24 = map(float, row[11:14]) #EIAS_E
+        x14, y14, z14 = map(float, row[41:44]) #EIAS_D
+        x24, y24, z24 = map(float, row[8:11]) #EIAS_E
 
         midpoint_xEIAS, midpoint_yEIAS, midpoint_zEIAS = calculate_midpoint(x14, y14, z14, x24, y24, z24)
         #_____________________________________________________________________________________________________________
