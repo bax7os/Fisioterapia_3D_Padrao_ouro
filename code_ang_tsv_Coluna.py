@@ -5,7 +5,7 @@ import numpy as np
 import math
 
 input_file = 'D:/Faculdade/PET/Fisioterapia/Fisioterapia_tsv/projeto-fisioterapia-3D/output/Coluna/output_file_points_Coluna.tsv'
-output_angle = 'D:/Faculdade/PET/Fisioterapia/Fisioterapia_tsv/projeto-fisioterapia-3D/angulos/Coluna/ang_Coluna_tsv.tsv'
+output_angle = 'D:/Faculdade/PET/Fisioterapia/Fisioterapia_tsv/projeto-fisioterapia-3D/angulos/Coluna/output_padrao_ouro_.tsv'
 
 def calculate_angle(point1, point2, point3):
     # Calculate vectors from point2 to point1 and point2 to point3
