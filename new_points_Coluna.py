@@ -42,8 +42,8 @@ with open(output_file_path, 'a', newline='') as tsv_out:
 
                 #ponto medio  CM_D e CM_E
                 #_____________________________________________________________________________________________________________
-                x1, y1, z1 = map(float, row[26:29]) #CM_D
-                x2, y2, z2 = map(float, row[29:32]) #CM_E
+                x1, y1, z1 = map(float, row[14:17]) #CM_D
+                x2, y2, z2 = map(float, row[17:20]) #CM_E
 
                 midpoint_xCM, midpoint_yCM, midpoint_zCM = calculate_midpoint(x1, y1, z1, x2, y2, z2)
                 #_____________________________________________________________________________________________________________
@@ -53,8 +53,8 @@ with open(output_file_path, 'a', newline='') as tsv_out:
 
                 #ponto medio AC_D e AC_E
                 #_____________________________________________________________________________________________________________
-                x11, y11, z11 = map(float, row[38:41]) #AC_D
-                x22, y22, z22 = map(float, row[41:44]) #AC_E
+                x11, y11, z11 = map(float, row[20:23]) #AC_D
+                x22, y22, z22 = map(float, row[23:26]) #AC_E
 
                 midpoint_xAC, midpoint_yAC, midpoint_zAC = calculate_midpoint(x11, y11, z11, x22, y22, z22)
                 #_____________________________________________________________________________________________________________
@@ -65,8 +65,8 @@ with open(output_file_path, 'a', newline='') as tsv_out:
 
                 #ponto medio TMF_D e TMF_E
                 #_____________________________________________________________________________________________________________
-                x13, y13, z13 = map(float, row[2:5]) #TMF_D
-                x23, y23, z23 = map(float, row[5:8]) #TMF_E
+                x13, y13, z13 = map(float, row[38:41]) #TMF_D
+                x23, y23, z23 = map(float, row[41:44]) #TMF_E
 
                 midpoint_xTMF, midpoint_yTMF, midpoint_zTMF = calculate_midpoint(x13, y13, z13, x23, y23, z23)
                 #_____________________________________________________________________________________________________________
@@ -77,8 +77,8 @@ with open(output_file_path, 'a', newline='') as tsv_out:
 
                 #ponto medio  EIAS_D e EIAS_E
                 #_____________________________________________________________________________________________________________
-                x14, y14, z14 = map(float, row[8:11]) #EIAS_D
-                x24, y24, z24 = map(float, row[11:14]) #EIAS_E
+                x14, y14, z14 = map(float, row[32:35]) #EIAS_D
+                x24, y24, z24 = map(float, row[35:38]) #EIAS_E
 
                 midpoint_xEIAS, midpoint_yEIAS, midpoint_zEIAS = calculate_midpoint(x14, y14, z14, x24, y24, z24)
                 #_____________________________________________________________________________________________________________
