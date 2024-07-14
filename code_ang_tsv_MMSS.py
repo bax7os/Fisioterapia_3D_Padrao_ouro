@@ -52,7 +52,7 @@ diretorio = 'D:/Faculdade/PET/Fisioterapia/Fisioterapia_tsv/projeto-fisioterapia
 arquivos_tsv = glob.glob(f'{diretorio}/*.tsv')
 
 # Abra o arquivo de saída uma vez fora do loop
-output_angle = 'D:/Faculdade/PET/Fisioterapia/Fisioterapia_tsv/projeto-fisioterapia-3D/angulos/output_angulos.tsv'
+output_angle = 'D:/Faculdade/PET/Fisioterapia/Fisioterapia_tsv/projeto-fisioterapia-3D/angulos/output_padrao_ouro_OB_E.tsv'
 with open(output_angle, 'a', newline='') as tsv_out:
     writer = csv.writer(tsv_out, delimiter='\t')
     
@@ -62,10 +62,11 @@ with open(output_angle, 'a', newline='') as tsv_out:
             frame = 0
             count = 0
             for row in reader:
+      
                 if count % 1 == 0:
                     # Cálculos dos ângulos
 
-                    x1, y1, z1 = map(float, row[47:50])  # cotovelo direito gerado por new_points
+                    x1, y1, z1 = map(float, row[50:53])  # cotovelo direito gerado por new_points
                     x2, y2, z2 = map(float, row[29:32])  # OMBRO direito (AC_D)
                     x3, y3, z3 = map(float, row[32:35])  # ombro esquerdo (AC_E)
                     ponto1 = [x1, y1, z1]
@@ -73,7 +74,7 @@ with open(output_angle, 'a', newline='') as tsv_out:
                     ponto3 = [x3, y3, z3]
                     ang_abd_ombro_direito = calculate_angle(ponto1, ponto2, ponto3)
 
-                    x12, y12, z12 = map(float, row[53:56])  # cotovelo esquerdo gerado por new_points
+                    x12, y12, z12 = map(float, row[56:59])  # cotovelo esquerdo gerado por new_points
                     x22, y22, z22 = map(float, row[23:26])  # OMBRO direito (AC_E)
                     x32, y32, z32 = map(float, row[20:23])  # ombro esquerdo (AC_D)
                     ponto1 = [x12, y12, z12]
@@ -81,23 +82,23 @@ with open(output_angle, 'a', newline='') as tsv_out:
                     ponto3 = [x32, y32, z32]
                     ang_abd_ombro_esquerdo = calculate_angle(ponto1, ponto2, ponto3)
 
-                    x13, y13, z13 = map(float, row[50:53])  # Pulso DIREITO gerado por new points   
-                    x23, y23, z23 = map(float, row[47:50])  # COTOVELO DIREITO gerado por new points 
+                    x13, y13, z13 = map(float, row[53:56])  # Pulso DIREITO gerado por new points   
+                    x23, y23, z23 = map(float, row[50:53])  # COTOVELO DIREITO gerado por new points 
                     x33, y33, z33 = map(float, row[20:23])  # OMBRO direito (AC_D)
                     ponto1 = [x13, y13, z13]
                     ponto2 = [x23, y23, z23]
                     ponto3 = [x33, y33, z33]
                     ang_flex_cotovelo_direito = calculate_angle(ponto1, ponto2, ponto3)
 
-                    x14, y14, z14 = map(float, row[56:59])  # Pulso ESQUERDO gerado por new points   
-                    x24, y24, z24 = map(float, row[53:56])  # COTOVELO ESQUERDO gerado por new points 
+                    x14, y14, z14 = map(float, row[59:62])  # Pulso ESQUERDO gerado por new points   
+                    x24, y24, z24 = map(float, row[56:59])  # COTOVELO ESQUERDO gerado por new points 
                     x34, y34, z34 = map(float, row[23:26])  # OMBRO esquerdo (AC_E)
                     ponto1 = [x14, y14, z14]
                     ponto2 = [x24, y24, z24]
                     ponto3 = [x34, y34, z34]
                     ang_flex_cotovelo_esquerdo = calculate_angle(ponto1, ponto2, ponto3)
 
-                    x15, y15, z15 = map(float, row[47:50])  # ponto medio EM_D EL_D
+                    x15, y15, z15 = map(float, row[50:53])  # ponto medio EM_D EL_D
                     x25, y25, z25 = map(float, row[20:23])  # AC_D
                     x35, y35, z35 = map(float, row[62:65])  # PELVE_D
                     ponto1 = [x15, y15, z15]
@@ -105,9 +106,9 @@ with open(output_angle, 'a', newline='') as tsv_out:
                     ponto3 = [x35, y35, z35]
                     ang_flex_ombro_direito = calculate_angle(ponto1, ponto2, ponto3)
 
-                    x16, y16, z16 = map(float, row[53:56])  # ponto medio EM_E EL_E
+                    x16, y16, z16 = map(float, row[56:59])  # COTOVELO ESQUERDO NEW POINTS
                     x26, y26, z26 = map(float, row[23:26])  # AC_E
-                    x36, y36, z36 = map(float, row[62:65])  # PELVE_E
+                    x36, y36, z36 = map(float, row[65:68])  # PELVE_E
                     ponto14 = [x16, y16, z16]
                     ponto24 = [x26, y26, z26]
                     ponto34 = [x36, y36, z36]
